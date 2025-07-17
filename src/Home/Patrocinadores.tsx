@@ -4,17 +4,17 @@ export default function Patrocinadores() {
       <img
         src="/Clinica_Estetica/steticapro.svg"
         alt="Stetica"
-        className="max-h-12 w-auto"
+        className="max-h-12 w-auto bg-black rounded-lg p-2 shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105"
       />
       <img
         src="/Clinica_Estetica/cerave.svg"
         alt="CeraVe"
-        className="max-h-12 w-auto"
+        className="max-h-12 w-auto bg-black rounded-lg p-2 shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105"
       />
       <img
         src="/Clinica_Estetica/hidrafacial.svg"
         alt="Hydrafacial"
-        className="max-h-12 w-auto"
+        className="max-h-12 w-auto bg-black  rounded-lg p-2 shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105"
       />
     </div>
   );
