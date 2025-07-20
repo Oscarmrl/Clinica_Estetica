@@ -21,6 +21,17 @@ export default function Nosotros() {
           <CarruselSwiper />
         </div>
       </div>
+      <div className="min-h-96 bg-base-300 flex justify-center items-center">
+        <div className="justify-center text-center ">
+          <h3 className="text-2xl md:text-3xl font-bold text-accent">
+            NUESTRA MISIÓN
+          </h3>
+          <p className="text-lg mt-4 md:text-2xl max-w-xl px-4 md:px-8">
+            MEJORAR LA IMAGEN FÍSICA DE NUESTROS PACIENTES, RESALTANDO SU
+            BELLEZA NATURAL UNIDA AL BIENESTAR, LA SALUD Y LA PREVENCIÓN.
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

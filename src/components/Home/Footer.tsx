@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <div>
-      <footer className="footer sm:footer-horizontal bg-base-100 text-neutral-content p-10">
+      <footer className="footer sm:footer-horizontal bg-base-300 text-neutral-content p-10">
         <aside className="text-accent">
           <svg
             width="50"
