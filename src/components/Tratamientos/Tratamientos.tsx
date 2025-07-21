@@ -50,13 +50,13 @@ export default function Tratamientos() {
 
   return (
     <div>
-      <h3 className="text-4xl font-bold text-center mt-10">
+      <h3 className="text-2xl md:text-4xl font-bold text-center mt-10">
         Nuestros Tratamientos
       </h3>
-      <div className="min-h-dvh m-10 grid grid-cols-3 gap-4">
+      <div className="min-h-dvh m-4 md:m-10 sm:grid-cols-2 grid grid-cols-1 md:grid-cols-3 gap-4 justify-center">
         {tratamientosPaginados.map((tratamientos, index) => (
           <div key={index}>
-            <div className="max-w-sm bg-base-100 border border-gray-200 rounded-lg shadow-sm">
+            <div className=" sm:max-w-sm bg-base-100 border border-gray-200 rounded-lg shadow-sm">
               <img
                 className="rounded-t-lg  w-full h-64 object-cover"
                 src="/Clinica_Estetica/home.jpg"
@@ -86,9 +86,9 @@ export default function Tratamientos() {
                   >
                     <path
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M1 5h12m0 0L9 1m4 4L9 9"
                     />
                   </svg>
