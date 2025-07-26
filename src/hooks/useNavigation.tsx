@@ -15,5 +15,8 @@ export default function useNavigation() {
     goToCitas: () => {
       navigate("/Clinica_Estetica/Citas");
     },
+    goToServicioDetail: (id: string) => {
+      navigate(`/Clinica_Estetica/Tratamientos/${id}`);
+    },
   };
 }
