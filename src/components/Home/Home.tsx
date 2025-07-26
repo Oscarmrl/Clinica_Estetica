@@ -1,4 +1,3 @@
-import BannerReserva from "../ui/BannerReserva";
 import Informacion from "./Informacion";
 import Patrocinadores from "./Patrocinadores";
 import Footer from "./Footer";
@@ -34,7 +33,6 @@ export default function Home() {
       <Patrocinadores />
       <main className="flex flex-col gap-y-6">
         <Informacion />
-        <BannerReserva />
       </main>
       <Footer />
     </div>
