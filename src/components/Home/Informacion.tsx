@@ -1,4 +1,7 @@
+import useNavigation from "../../hooks/useNavigation";
+
 export default function Informacion() {
+  const { goToNosotros } = useNavigation();
   return (
     <div className="min-h-[600px] grid grid-rows md:grid-cols-2 gap-4 bg-base-100 ">
       <div className="flex flex-col gap-4 justify-center mt-3 ">
@@ -12,7 +15,10 @@ export default function Informacion() {
           de última generación y un enfoque centrado en realzar tu belleza
           natural con resultados visibles y armoniosos.
         </p>
-        <button className="btn-outline btn m-6 text-accent">
+        <button
+          onClick={goToNosotros}
+          className="btn-outline btn m-6 btn-accent"
+        >
           MÁS INFORMACIÓN
         </button>
       </div>

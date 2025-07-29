@@ -1,4 +1,6 @@
+import useNavigation from "../../hooks/useNavigation";
 export default function BannerReserva() {
+  const { goToTratamientos } = useNavigation();
   return (
     <div className="h-[500px] bg-white w-full grid grid-cols-1 md:grid-cols-2">
       <div className="min-h-[300px] md:min-h-[500px]">
@@ -14,7 +16,10 @@ export default function BannerReserva() {
             ¡NO SIGAS PERDIENDO TIEMPO!
           </h2>
           <p className="mt-2">Reserva tu cita con nosotros ahora mismo.</p>
-          <button className="mt-4 px-6 py-2 btn-outline btn">
+          <button
+            onClick={goToTratamientos}
+            className="mt-4 px-6 py-2 btn-outline btn"
+          >
             RESERVAR CITA
           </button>
         </div>
