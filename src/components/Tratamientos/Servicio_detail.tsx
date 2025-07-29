@@ -2,12 +2,16 @@ import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import type { Tratamiento } from "../../types";
 import Otrasopciones from "./Otrasopciones";
+import FormularioCita from "../ui/FormularioCita";
+import { useState } from "react";
 
 export default function Servicio_detail() {
   const { id } = useParams();
+  const usuarioAutenticado = 1; // 🛠️ Simulación de usuario autenticado, reemplazar con lógica real
   const servicio = useFetch<Tratamiento>({
     url: "http://localhost/crud-php-citas/obtener_servicios.php",
   });
+  const [showModal, setShowModal] = useState(false);
 
   if (!servicio)
     return (
@@ -32,7 +36,7 @@ export default function Servicio_detail() {
           <div className="h-[350px] md:h-[550px] relative">
             <img
               className="w-full h-full object-cover"
-              src="/Clinica_Estetica/home.jpg"
+              src={`/Clinica_Estetica/Servicios/${servicioDetail.foto_servicio}.jpg`}
               alt=""
             />
           </div>
@@ -49,9 +53,19 @@ export default function Servicio_detail() {
             <span className="font-bold text-lg">
               precio: {servicioDetail.precio}
             </span>
-            <button className="md:mr-10 btn btn-outline text-primary md:btn-wide">
+            <button
+              onClick={() => setShowModal(true)}
+              className="md:mr-10 btn btn-outline btn-primary md:btn-wide"
+            >
               RESERVAR CITA
             </button>
+            {showModal && (
+              <FormularioCita
+                Onclose={() => setShowModal(false)}
+                servicioPreseleccionado={servicioDetail}
+                pacienteId={usuarioAutenticado.toString()}
+              />
+            )}
           </div>
         </div>
       </div>
