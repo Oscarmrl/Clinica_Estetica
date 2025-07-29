@@ -6,9 +6,12 @@ import "swiper/css/pagination";
 
 const CarruselSwiper = () => {
   const imagenes = [
-    "/Clinica_Estetica/home.jpg",
-    "/Clinica_Estetica/home.jpg",
-    "/Clinica_Estetica/home.jpg",
+    "/Clinica_Estetica/ImagenesClinica/Clinica1.jpg",
+    "/Clinica_Estetica/ImagenesClinica/Clinica2.jpg",
+    "/Clinica_Estetica/ImagenesClinica/clinica3.jpg",
+    "/Clinica_Estetica/ImagenesClinica/clinica4.jpg",
+    "/Clinica_Estetica/ImagenesClinica/Clinica5.jpg",
+    "/Clinica_Estetica/ImagenesClinica/clinica6.jpg",
   ];
 
   return (

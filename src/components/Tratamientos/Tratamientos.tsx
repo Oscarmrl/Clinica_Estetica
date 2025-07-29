@@ -28,7 +28,7 @@ export default function Tratamientos() {
             <div className="max-w-sm bg-base-100 border border-gray-200 rounded-lg shadow-sm">
               <img
                 className="rounded-t-lg  w-full h-64 object-cover"
-                src="/Clinica_Estetica/home.jpg"
+                src={`/Clinica_Estetica/Servicios/${servicios.foto_servicio}.jpg`}
                 alt=""
               />
               <div className="p-5">
@@ -42,7 +42,7 @@ export default function Tratamientos() {
                 </p>
                 <a
                   onClick={() => goToServicioDetail(servicios.id.toString())}
-                  className="btn-outline btn text-accent inline-flex items-center px-3 py-2 text-sm font-medium text-center  rounded-lg"
+                  className="btn-outline btn btn-accent inline-flex items-center px-3 py-2 text-sm font-medium text-center  rounded-lg"
                 >
                   Leer más
                   <svg
