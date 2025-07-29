@@ -1,6 +1,5 @@
 import Informacion from "./Informacion";
 import Patrocinadores from "./Patrocinadores";
-import Footer from "./Footer";
 
 export default function Home() {
   return (
@@ -34,7 +33,6 @@ export default function Home() {
       <main className="flex flex-col gap-y-6">
         <Informacion />
       </main>
-      <Footer />
     </div>
   );
 }
