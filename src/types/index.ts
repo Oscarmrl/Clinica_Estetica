@@ -16,6 +16,7 @@ export type Cita = {
   hora: string;
   estado: string;
   notas: string;
+  nombre_servicio: string;
 };
 export type Formulariocita = Cita & {
   paciente_id: string;
