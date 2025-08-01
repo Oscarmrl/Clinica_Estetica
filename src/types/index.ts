@@ -18,7 +18,7 @@ export type Cita = {
   notas: string;
   nombre_servicio: string;
 };
-export type Formulariocita = Cita & {
+export type Formulariocita = Omit<Cita, "nombre_servicio"> & {
   paciente_id: string;
   especialista_id: string;
   servicio_id: string;
