@@ -1,21 +1,20 @@
-import { useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import type { Tratamiento } from "../../types";
 import useNavigation from "../../hooks/useNavigation";
+import usePagination from "../../hooks/usePagination";
 
 export default function Tratamientos() {
   const servicios = useFetch<Tratamiento>({
     url: "http://localhost/crud-php-citas/obtener_servicios.php",
   });
   const { goToServicioDetail } = useNavigation();
-  const [pagination, SetPagination] = useState(1);
-
-  const porPagina = 6;
-
-  const totalPaginas = Math.ceil(servicios.length / porPagina);
-
-  const inicio = (pagination - 1) * porPagina;
-  const serviciosPaginados = servicios.slice(inicio, inicio + porPagina);
+  const {
+    paginatedItems: serviciosPaginados,
+    previaPagina,
+    proximaPagina,
+    totalPaginas,
+    paginacion,
+  } = usePagination(servicios, 6);
 
   return (
     <div>
@@ -70,18 +69,18 @@ export default function Tratamientos() {
       <div className="flex justify-center gap-4 mt-10 items-center place-content-center mb-5">
         <button
           className="btn"
-          disabled={pagination === 1}
-          onClick={() => SetPagination(pagination - 1)}
+          disabled={paginacion === 1}
+          onClick={previaPagina}
         >
           Anterior
         </button>
         <span className="text-lg font-semibold">
-          Página {pagination} de {totalPaginas}
+          Página {paginacion} de {totalPaginas}
         </span>
         <button
           className="btn"
-          disabled={pagination === totalPaginas}
-          onClick={() => SetPagination(pagination + 1)}
+          disabled={paginacion === totalPaginas}
+          onClick={proximaPagina}
         >
           Siguiente
         </button>
