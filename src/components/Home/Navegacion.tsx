@@ -35,14 +35,6 @@ export default function Navegacion() {
               </li>
               <li>
                 <a onClick={goToTratamientos}>Tratamientos</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
               </li>
               <li>
                 <a onClick={goToNosotros}>Nosotros</a>
