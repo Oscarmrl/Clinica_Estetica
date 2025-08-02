@@ -1,22 +1,41 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import type { endpoit } from "../types";
 
 export default function useFetch<T>({ url }: endpoit) {
   const [data, setData] = useState<T[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<Error | null>(null);
 
-  useEffect(() => {
-    if (!url) return; // 🔒 evita llamada si no hay URL válida
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        if (Array.isArray(data)) {
-          setData(data);
-        } else {
-          setData([]);
-        }
-      })
-      .catch((error) => console.log("Error al obtener tratamientos:", error));
+  const fetchData = useCallback(async () => {
+    if (!url) return;
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(url);
+      const json = await response.json();
+
+      if (Array.isArray(json)) {
+        setData(json);
+      } else {
+        setData([]);
+      }
+    } catch (err) {
+      console.error("Error al obtener datos:", err);
+      setError(err as Error);
+    } finally {
+      setLoading(false);
+    }
   }, [url]);
 
-  return data;
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  return {
+    data,
+    loading,
+    error,
+    refetch: fetchData,
+  };
 }
