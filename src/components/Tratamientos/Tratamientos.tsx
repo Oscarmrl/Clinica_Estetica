@@ -4,7 +4,7 @@ import useNavigation from "../../hooks/useNavigation";
 import usePagination from "../../hooks/usePagination";
 
 export default function Tratamientos() {
-  const servicios = useFetch<Tratamiento>({
+  const { data: servicios } = useFetch<Tratamiento>({
     url: "http://localhost/crud-php-citas/obtener_servicios.php",
   });
   const { goToServicioDetail } = useNavigation();

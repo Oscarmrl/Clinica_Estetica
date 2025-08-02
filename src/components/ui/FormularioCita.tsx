@@ -48,7 +48,7 @@ export default function FormularioCita({
     useState<string>("");
   const [toastMessage, setToastMessage] = useState("");
 
-  const especialistasPorServicio = useFetch<Especialista>({
+  const { data: especialistasPorServicio } = useFetch<Especialista>({
     url: `http://localhost/crud-php-citas/obtener_especialistas_por_servicio.php?servicio=${encodeURIComponent(
       servicioPreseleccionado.nombre
     )}`,
@@ -127,7 +127,7 @@ export default function FormularioCita({
       setToastMessage("Error al registrar la cita");
     }
   };
-  const horariosDisponibles = useFetch<Horario>({
+  const { data: horariosDisponibles } = useFetch<Horario>({
     url: especialistaSeleccionado
       ? `http://localhost/crud-php-citas/obtener_horarios_por_especialista.php?especialista_id=${especialistaSeleccionado}`
       : "",

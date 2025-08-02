@@ -8,7 +8,8 @@ import { useState } from "react";
 export default function Servicio_detail() {
   const { id } = useParams();
   const usuarioAutenticado = 1; // 🛠️ Simulación de usuario autenticado, reemplazar con lógica real
-  const servicio = useFetch<Tratamiento>({
+
+  const { data: servicio } = useFetch<Tratamiento>({
     url: "http://localhost/crud-php-citas/obtener_servicios.php",
   });
   const [showModal, setShowModal] = useState(false);
@@ -31,9 +32,9 @@ export default function Servicio_detail() {
 
   return (
     <div>
-      <div className=" justify-center bg-base-300 h-[550px] grid grid-rows-1 md:grid-cols-2 gap-4 ">
+      <div className="justify-center bg-base-300 grid grid-rows-1 md:grid-cols-2 gap-4 ">
         <div>
-          <div className="h-[350px] md:h-[550px] relative">
+          <div className="h-[250px] sm:h-[300px] md:h-[550px] relative ">
             <img
               className="w-full h-full object-cover"
               src={`/Clinica_Estetica/Servicios/${servicioDetail.foto_servicio}.jpg`}

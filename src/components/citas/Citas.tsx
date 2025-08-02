@@ -2,11 +2,13 @@ import type { Cita } from "../../types";
 import useFetch from "../../hooks/useFetch";
 import usePagination from "../../hooks/usePagination";
 import { TiDeleteOutline } from "react-icons/ti";
+import useMutation from "../../hooks/useMutation";
 
 export default function Citas() {
-  const citas = useFetch<Cita>({
+  const { data: citas, refetch } = useFetch<Cita>({
     url: "http://localhost/crud-php-citas/obtener_citas.php",
   });
+
   const {
     paginatedItems: citas_paginadas,
     proximaPagina,
@@ -14,6 +16,21 @@ export default function Citas() {
     totalPaginas,
     paginacion,
   } = usePagination(citas, 4);
+
+  const { mutate } = useMutation();
+
+  const eliminarCita = (id: number) => {
+    mutate("http://localhost/crud-php-citas/eliminar_cita.php", "POST", { id })
+      .then((res) => {
+        if (res.issuccess) {
+          alert("Cita creada correctamente");
+          refetch();
+        } else {
+          alert("Error al eliminar cita: " + res.message);
+        }
+      })
+      .catch((err) => alert("Error al eliminar cita:" + err.message));
+  };
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -23,7 +40,10 @@ export default function Citas() {
 
       <div className=" grid grid-cols-1 gap-4  md:m-10 ">
         {citas_paginadas.map((cita) => (
-          <div className="bg-base-300 w-full md:w-[900px] rounded-2xl grid grid-cols-3 gap-1 md:gap-4 ">
+          <div
+            key={cita.id}
+            className="bg-base-300 w-full md:w-[900px] rounded-2xl grid grid-cols-3 gap-1 md:gap-4 "
+          >
             <img
               src="/Clinica_Estetica/home.jpg"
               alt=""
@@ -38,7 +58,16 @@ export default function Citas() {
             </div>
 
             <div className="flex flex-col justify-between items-end">
-              <TiDeleteOutline className="btn rounded-b-full btn-dash text-red-600" />
+              <TiDeleteOutline
+                className="btn rounded-b-full btn-dash text-red-600 bg-base-200"
+                onClick={() => {
+                  if (
+                    confirm("¿Estás seguro de que quieres eliminar esta cita?")
+                  ) {
+                    eliminarCita(cita.id!);
+                  }
+                }}
+              />
               <button
                 className="btn btn-accent btn-wide rounded-t-full text-xs px-2
 "

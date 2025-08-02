@@ -5,7 +5,10 @@ import useNavigation from "../../hooks/useNavigation";
 
 export default function Otrasopciones() {
   const { id } = useParams();
-  const servicio = useFetch<Tratamiento>({
+  // const servicio = useFetch<Tratamiento>({
+  //   url: "http://localhost/crud-php-citas/obtener_servicios.php",
+  // });
+  const { data: servicio } = useFetch<Tratamiento>({
     url: "http://localhost/crud-php-citas/obtener_servicios.php",
   });
   const { goToServicioDetail } = useNavigation();
